@@ -7,7 +7,7 @@
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-     <link rel="icon" href="{{ asset('images/logo-simetri.png') }}" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{ asset('images/logo-simetri.png') }}" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="styles.css">
 
     <style>
@@ -173,8 +173,13 @@
             <img src="{{ asset('images/logo-simetri.png') }}" height="300" alt="Login Illustration">
         </div>
 
+
+
         <!-- Right side: Login form -->
         <div class="form-section">
+
+
+
 
             <div class="login-card">
                 <!-- Logo -->
@@ -185,6 +190,14 @@
                 <!-- Heading -->
                 <h1>Welcome Back</h1>
                 <p>Please sign in to continue</p>
+
+                <!-- Alert error -->
+                @if (session('error'))
+                    <div
+                        style="background-color: #f8d7da; color: #721c24; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; border: 1px solid #f5c6cb; text-align: left;">
+                        {{ session('error') }}
+                    </div>
+                @endif
 
                 <!-- Form -->
                 <form action="{{ route('login') }}" method="POST">
@@ -203,7 +216,6 @@
                         <a href="#" class="forgot-password">Forgot password?</a>
                     </div>
                 </form>
-
             </div>
 
         </div>

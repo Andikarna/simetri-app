@@ -175,7 +175,7 @@
     <div class="sidebar">
         <div class="logo">
             <img src="{{ asset('images/logo-simetri.png') }}" alt="Logo">
-            <h5 class="mt-2">PT Simetri Indo Pratama</h5>
+            <h5 class="mt-2">PT Sinar Metrindo Perkasa</h5>
         </div>
 
         <ul class="nav flex-column">

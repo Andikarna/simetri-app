@@ -31,14 +31,22 @@ class LoginController extends Controller
             session(['auth_login' => true]);
             $request->session()->regenerate();
 
-            return redirect('dashboard');
+            if(Auth::user()->role_id == 2){
+                return redirect('dashboard');
+            }
+
+            if(Auth::user()->role_id == 1){
+                return redirect('request');
+            }
+
+            if(Auth::user()->role_id == 3){
+                return redirect('product');
+            }
+           
             
         }
 
-        // Jika autentikasi gagal
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->withInput();
+        return back()->with('error', 'Email atau password salah!');
     }
 
     public function logout(Request $request)

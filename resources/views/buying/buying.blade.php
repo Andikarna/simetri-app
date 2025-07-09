@@ -52,9 +52,13 @@
                                     <a href="{{ route('buying.detail', $item->id) }}" class="btn btn-primary btn-sm">
                                         <i class="bi bi-eye"></i> Lihat Detail
                                     </a>
-                                    <a href="{{ route('buying.done', $item->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="bi bi-check2-circle"></i> Selesaikan Pemesanan
-                                    </a>
+
+                                    @if (Auth::user()->role_id == 2)
+                                        <a href="{{ route('buying.done', $item->id) }}" class="btn btn-warning btn-sm">
+                                            <i class="bi bi-check2-circle"></i> Selesaikan Pemesanan
+                                        </a>
+                                    @endif
+                                    
                                 </td>
                             </tr>
                         @endforeach
