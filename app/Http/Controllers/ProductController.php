@@ -35,13 +35,13 @@ class ProductController extends Controller
             $utuhProduk = MasterUtuhProduk::where('ukuran', $request->ukuranProduk)->first();
 
             if ($utuhProduk) {
-                $utuhProduk->quantity = $utuhProduk->quantity + 1;
+                $utuhProduk->quantity = $utuhProduk->quantity + $request->panjang;
                 $utuhProduk->save();
             } else {
                 $newUtuhProduk = new MasterUtuhProduk();
                 $newUtuhProduk->name = "Tembaga " . $request->ukuranProduk;
                 $newUtuhProduk->ukuran = $request->ukuranProduk;
-                $newUtuhProduk->quantity = 1;
+                $newUtuhProduk->quantity = $request->panjang;
                 $newUtuhProduk->save();
             }
         } else {
