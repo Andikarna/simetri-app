@@ -34,6 +34,7 @@
                             <th><i class="bi bi-box"></i> Item No.</th>
                             <th><i class="bi bi-info-circle"></i> Item Description</th>
                             <th><i class="bi bi-tags"></i> Merk</th>
+                            <th><i class="bi bi-tags"></i> Jumlah</th>
                             <th><i class="bi bi-calendar-x"></i> Tanggal Datang</th>
                             <th><i class="bi bi-gear"></i> Aksi</th>
                         </tr>
@@ -43,11 +44,12 @@
                             <tr>
                                 <td>{{ Carbon\Carbon::parse($item->date)->format('d M Y') }}</td>
                                 <td>{{ $item->no_sppt }}</td>
-                                <td>{{ $item->no }}</td>
+                                <td class="text-center">{{ $item->no }}</td>
                                 <td>{{ $item->item_number }}</td>
-                                <td>{{ $item->item_description }}</td>
-                                <td>{{ $item->merk }}</td>
-                                <td>{{ Carbon\Carbon::parse($item->expired_date)->format('d M Y') }}</td>
+                                <td class="text-center">{{ $item->item_description }}</td>
+                                <td class="text-center">{{ $item->merk }}</td>
+                                <td class="text-center">{{ $item->required }}</td>
+                                <td class="text-center">{{ Carbon\Carbon::parse($item->expired_date)->format('d M Y') }}</td>
                                 <td>
                                     <a href="{{ route('buying.detail', $item->id) }}" class="btn btn-primary btn-sm">
                                         <i class="bi bi-eye"></i> Lihat Detail
@@ -82,8 +84,13 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="no_sppt" class="form-label"><i class="bi bi-receipt"></i> No SPPT</label>
-                            <input type="text" class="form-control" id="no_sppt" name="no_sppt" required>
+                            <label for="no_sppt" class="form-label"><i class="bi bi-receipt"></i> Ukuran</label>
+                            {{-- <input type="text" class="form-control" id="no_sppt" name="no_sppt" required> --}}
+                            <select name="size" id="size" class="form-control">
+                                @foreach ($size as $data )
+                                    <option value="{{ $data->ukuran }}">{{ $data->ukuran }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="item_number" class="form-label"><i class="bi bi-box"></i> Item Number</label>
